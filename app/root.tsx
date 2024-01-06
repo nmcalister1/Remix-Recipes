@@ -52,7 +52,7 @@ export default function App() {
             </AppNavLink>
           </ul>
         </nav>
-        <div className="p-4 w-full">
+        <div className="p-4 w-full md:w-[calc(100%-4rem)]">
           <Outlet />
         </div>
         <ScrollRestoration />
@@ -72,7 +72,7 @@ function AppNavLink({ to, children } : AppNavLinkProps){
   const path = useResolvedPath(to)
   const navigation = useNavigation()
 
-  const isLoading = navigation.state === "loading" && navigation.location.pathname === path.pathname
+  const isLoading = navigation.state === "loading" && navigation.location.pathname === path.pathname && navigation.formData === null
   return (
     <li className="w-16">
       <NavLink to={to}>

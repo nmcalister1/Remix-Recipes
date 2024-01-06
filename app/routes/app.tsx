@@ -11,7 +11,7 @@ export default function App(){
                     isActive ? "border-b-2 border-b-primary" : ""
                 )}>Pantry</NavLink>
             </nav>
-            <div className="py-4">
+            <div className="py-4 overflow-y-auto">
                 <Outlet />
             </div>
         </div>
