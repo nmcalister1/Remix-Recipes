@@ -1,4 +1,5 @@
 import db from "~/db.server";
+import { handleDelete } from "./utils";
 
 export function getAllShelves(query: string | null){
     return db.pantryShelf.findMany({
@@ -25,6 +26,26 @@ export function createShelf(){
     return db.pantryShelf.create({
         data: {
             name: "New Shelf",
+        }
+    })
+}
+
+export function deleteShelf(shelfId: string){
+    return handleDelete(() => db.pantryShelf.delete({
+        where: {
+            id: shelfId,
+        }
+    }))
+    
+}
+
+export function saveShelfName(shelfId: string, shelfName: string){
+    return db.pantryShelf.update({
+        where: {
+            id: shelfId,
+        }, 
+        data: {
+            name: shelfName,
         }
     })
 }
